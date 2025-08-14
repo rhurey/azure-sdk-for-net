@@ -66,7 +66,7 @@ namespace Azure.AI.VoiceLive
                 return null;
             }
             string @object = default;
-            ItemType @type = default;
+            ConversationResponseItemType @type = default;
             string id = default;
             IDictionary<string, BinaryData> additionalBinaryDataProperties = new ChangeTrackingDictionary<string, BinaryData>();
             foreach (var prop in element.EnumerateObject())
@@ -78,7 +78,7 @@ namespace Azure.AI.VoiceLive
                 }
                 if (prop.NameEquals("type"u8))
                 {
-                    @type = new ItemType(prop.Value.GetString());
+                    @type = prop.Value.GetString().ToConversationResponseItemType();
                     continue;
                 }
                 if (prop.NameEquals("id"u8))

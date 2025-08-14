@@ -24,7 +24,7 @@ namespace Azure.AI.VoiceLive
         /// <param name="itemId"> The ID of the assistant message item that was truncated. </param>
         /// <param name="contentIndex"> The index of the content part that was truncated. </param>
         /// <param name="audioEndMs"> The duration up to which the audio was truncated, in milliseconds. </param>
-        internal ServerEventConversationItemTruncated(string itemId, int contentIndex, int audioEndMs) : base(ServerEventType.ConversationItemTruncated)
+        internal ServerEventConversationItemTruncated(string itemId, int contentIndex, int audioEndMs) : base(ServerEventType1.ConversationItemTruncated)
         {
             ItemId = itemId;
             ContentIndex = contentIndex;
@@ -38,7 +38,7 @@ namespace Azure.AI.VoiceLive
         /// <param name="contentIndex"> The index of the content part that was truncated. </param>
         /// <param name="audioEndMs"> The duration up to which the audio was truncated, in milliseconds. </param>
         /// <param name="eventId"></param>
-        internal ServerEventConversationItemTruncated(ServerEventType @type, IDictionary<string, BinaryData> additionalBinaryDataProperties, string itemId, int contentIndex, int audioEndMs, string eventId) : base(@type, eventId, additionalBinaryDataProperties)
+        internal ServerEventConversationItemTruncated(ServerEventType1 @type, IDictionary<string, BinaryData> additionalBinaryDataProperties, string itemId, int contentIndex, int audioEndMs, string eventId) : base(@type, eventId, additionalBinaryDataProperties)
         {
             ItemId = itemId;
             ContentIndex = contentIndex;

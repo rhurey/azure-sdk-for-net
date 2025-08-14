@@ -18,7 +18,7 @@ namespace Azure.AI.VoiceLive
     {
         /// <summary> Initializes a new instance of <see cref="ServerEventSessionUpdated"/>. </summary>
         /// <param name="session"></param>
-        internal ServerEventSessionUpdated(ResponseSession session) : base(ServerEventType.SessionUpdated)
+        internal ServerEventSessionUpdated(ResponseSession session) : base(ServerEventType1.SessionUpdated)
         {
             Session = session;
         }
@@ -28,7 +28,7 @@ namespace Azure.AI.VoiceLive
         /// <param name="eventId"></param>
         /// <param name="additionalBinaryDataProperties"> Keeps track of any properties unknown to the library. </param>
         /// <param name="session"></param>
-        internal ServerEventSessionUpdated(ServerEventType @type, string eventId, IDictionary<string, BinaryData> additionalBinaryDataProperties, ResponseSession session) : base(@type, eventId, additionalBinaryDataProperties)
+        internal ServerEventSessionUpdated(ServerEventType1 @type, string eventId, IDictionary<string, BinaryData> additionalBinaryDataProperties, ResponseSession session) : base(@type, eventId, additionalBinaryDataProperties)
         {
             Session = session;
         }

@@ -61,14 +61,14 @@ namespace Azure.AI.VoiceLive
             {
                 return null;
             }
-            ClientEventType @type = default;
+            ClientEventType1 @type = default;
             string eventId = default;
             IDictionary<string, BinaryData> additionalBinaryDataProperties = new ChangeTrackingDictionary<string, BinaryData>();
             foreach (var prop in element.EnumerateObject())
             {
                 if (prop.NameEquals("type"u8))
                 {
-                    @type = new ClientEventType(prop.Value.GetString());
+                    @type = prop.Value.GetString().ToClientEventType1();
                     continue;
                 }
                 if (prop.NameEquals("event_id"u8))
