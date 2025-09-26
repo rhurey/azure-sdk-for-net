@@ -26,9 +26,7 @@ namespace Azure.AI.VoiceLive.Tests
         [TestCase]
         public async Task AzureStandardVoice()
         {
-            var vlc = string.IsNullOrEmpty(TestEnvironment.ApiKey) ?
-                new VoiceLiveClient(new Uri(TestEnvironment.Endpoint), new DefaultAzureCredential(true)) :
-                new VoiceLiveClient(new Uri(TestEnvironment.Endpoint), new AzureKeyCredential(TestEnvironment.ApiKey));
+            var vlc = GetLiveClient();
 
             var voice = new AzureStandardVoice("en-US-AriaNeural");
 
@@ -54,14 +52,11 @@ namespace Azure.AI.VoiceLive.Tests
             Assert.AreEqual(voice.Name, standardVoice.Name);
         }
 
-        //[Ignore("Service issues")]
         [LiveOnly]
         [TestCase]
         public async Task DisableToolCalls()
         {
-            var vlc = string.IsNullOrEmpty(TestEnvironment.ApiKey) ?
-                new VoiceLiveClient(new Uri(TestEnvironment.Endpoint), new DefaultAzureCredential(true)) :
-                new VoiceLiveClient(new Uri(TestEnvironment.Endpoint), new AzureKeyCredential(TestEnvironment.ApiKey));
+            var vlc = GetLiveClient();
 
             var options = new VoiceLiveSessionOptions()
             {
@@ -90,5 +85,13 @@ namespace Azure.AI.VoiceLive.Tests
             var responseCreated = await GetNextUpdate<SessionUpdateResponseCreated>(updatesEnum).ConfigureAwait(false);
             var responseItems = await CollectResponseUpdates(updatesEnum, TimeoutToken).ConfigureAwait(false);
         }
+        /*
+        [TestCase]
+        [LiveOnly]
+        public async Task BOYMWithHeaders()
+        {
+
+        }
+        */
     }
 }
